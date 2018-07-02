@@ -19,7 +19,7 @@ public class ServerSocketExample {
         System.out.println("Wait connect...");
         ExecutorService pool = Executors.newFixedThreadPool(10);
         while (true) {
-           pool.execute(new ObjcetSocketThread(serverSocket.accept()));
+           pool.execute(new InTownGameSocketThread(serverSocket.accept()));
         }
 
     }

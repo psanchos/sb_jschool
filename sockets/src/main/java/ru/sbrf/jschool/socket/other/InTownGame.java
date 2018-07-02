@@ -1,5 +1,7 @@
 package ru.sbrf.jschool.socket.other;
 
+import ru.sbrf.jschool.socket.tcp.MulticastResultListener;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -55,6 +57,7 @@ public class InTownGame {
         }
         myCities.add(city);
         stepCount++;
+        fireListener();
         return String.format("%s вам на %s", city, lastChar(city).toUpperCase());
     }
 
@@ -104,5 +107,9 @@ public class InTownGame {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         new InTownGame();
+    }
+
+    public void addListener(StepListener listener) {
+        listeners.add(listener);
     }
 }

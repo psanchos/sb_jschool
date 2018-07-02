@@ -7,8 +7,8 @@ import java.net.MulticastSocket;
 
 public class MulticastReciver {
     public static final String  MULTICAST_GROUP = "239.255.255.0";
-    public static final int PORT = 2991;
-    public static final int BUFFER_SIZE = 64;
+    public static final int PORT = 2019;
+    public static final int BUFFER_SIZE = 256;
 
     public static void main(String[] args) {
         try(MulticastSocket multicastSocket = new MulticastSocket(PORT)){

@@ -4,13 +4,17 @@ import ru.sbrf.jschool.socket.other.InTownGame;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class InTownGameSocketThread extends Thread {
     private Socket socket;
     private InTownGame game = new InTownGame();
 
-    public InTownGameSocketThread(Socket socket) {
+    public InTownGameSocketThread(Socket socket) throws SocketException, UnknownHostException {
+
         this.socket = socket;
+        game.addListener(new MulticastResultListener());
     }
 
     @Override
