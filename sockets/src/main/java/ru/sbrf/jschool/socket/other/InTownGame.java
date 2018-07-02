@@ -13,8 +13,10 @@ public class InTownGame {
 
     final Map<String, Set<String>> cities = new HashMap<>();
     final LinkedList<String> myCities = new LinkedList<>();
-    final Set<String> userCities = new HashSet<>();
+    final LinkedList<String> userCities = new LinkedList<>();
     int userFails = 0;
+    int stepCount = 0;
+    final List<StepListener> listeners = new ArrayList<>();
 
     public InTownGame() {
         final URL citiesFileUrl = getClass().getResource("/cities.txt");
@@ -52,6 +54,7 @@ public class InTownGame {
             throw new InTownGameException("Вы выйграли");
         }
         myCities.add(city);
+        stepCount++;
         return String.format("%s вам на %s", city, lastChar(city).toUpperCase());
     }
 
@@ -85,6 +88,12 @@ public class InTownGame {
             return String.format("Неверно, осталось %d попыток", USER_ATTEMPT-userFails);
         }else {
             throw new InTownGameException("Вы проиграли");
+        }
+    }
+
+    private void fireListener(){
+        for(StepListener listener:listeners){
+            listener.stepPerformed(stepCount,userCities.getLast(), myCities.getLast());
         }
     }
 
