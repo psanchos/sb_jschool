@@ -1,6 +1,5 @@
 package ru.sbrf.jschool.core.exception;
 
-import java.io.IOException;
 import java.util.logging.Logger;
 
 public class BestPractice {
@@ -16,7 +15,7 @@ public class BestPractice {
     }
 
     //Декларируйте конкретные эксепшн
-    public static void advice2() throws Exception {
+    public static void advice2() throws SpecificException1, SpecificException2 {
         methodWithException();
         methodWithException2();
     }

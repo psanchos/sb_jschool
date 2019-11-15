@@ -10,10 +10,13 @@ public class Example1 {
             throw new  Exception2();
         }catch (Exception2 ex){
             throw new Exception3();
+        }finally {
+            throw new FinallyException();
         }
     }
 
     static class Exception1 extends RuntimeException{}
     static class Exception2 extends RuntimeException{}
     static class Exception3 extends RuntimeException{}
+    static class FinallyException extends RuntimeException{}
 }
